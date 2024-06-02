@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8bbd0;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+h1, h2 {
+    text-align: center;
+    color: #d81b60;
+}
+.field-group {
+    margin-bottom: 20px;
+}
+.field-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #ad1457;
+}
+.field-group .value {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f3e5f5;
+    color: #333;
+}
+.field-group .value textarea {
+    width: 100%;
+    height: 100px;
+    border: none;
+    background-color: #f3e5f5;
+    resize: none;
+    color: #333;
+}
+/*.buttons {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin-top: 20px;*/
+/*}*/
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-left: 10px;
+    background-color: #f06292;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.btn:hover {
+    background-color: #ec407a;
+}
+.delete-button {
+    background-color: #e91e63;
+}
+.delete-button:hover {
+    background-color: #c2185b;
+}
+.back-button {
+    background-color: #f48fb1;
+}
+.back-button:hover {
+    background-color: #ec407a;
+}
+.answers-container {
+    margin-top: 40px;
+}
+.answer {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fce4ec;
+}
+.answer-title {
+    font-weight: bold;
+    color: #d81b60;
+}
+.answer-content {
+    margin-top: 10px;
+    color: #ad1457;
+}
+.answer-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.answer-buttons .btn {
+    margin-left: 10px;
+}

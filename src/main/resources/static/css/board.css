@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    /*background-color: #fce4ec;*/
+    background-image: url("/static/images/cloud.jpg");
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #d81b60;
+}
+
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.board-table th,
+.board-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f8bbd0;
+    text-align: left;
+}
+
+.board-table th {
+    background-color: #f48fb1;
+    color: white;
+}
+
+.board-table tr:hover {
+    background-color: #fce4ec;
+}
+
+.board-table a {
+    text-decoration: none;
+    color: #d81b60;
+}
+
+.board-table a:hover {
+    color: #ad1457;
+}

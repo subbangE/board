@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+<div class="container">
+    <h1>게시판</h1>
+    <div class="button-container">
+        <a href="/question/create" class="btn-primary">질문 등록</a>
+    </div>
+    <table class="board-table">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>제목</th>
+            <th>작성자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${questionList}">
+            <td th:text="${question.questionNo}"></td>
+            <td><a th:href="@{/question/{questionNo}(questionNo=${question.questionNo})}" th:text="${question.questionTitle}"></a></td>
+            <td th:text="${question.userNo}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

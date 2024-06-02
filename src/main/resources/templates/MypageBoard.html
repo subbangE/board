@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문 리스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        a {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .action-buttons a, .action-buttons button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .action-buttons a:hover, .action-buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>내 질문 리스트</h1>
+    <a href="/question/create">질문 생성</a>
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>회원일련번호</th>
+            <th>수정 및 삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${userquestionList}">
+            <td th:text="${question.questionNo}">질문번호</td>
+            <td th:text="${question.questionTitle}">제목</td>
+            <td th:text="${question.questionContent}">내용</td>
+            <td th:text="${question.userNo}">회원일련번호</td>
+            <td class="action-buttons">
+                <a th:href="@{/question/update/{questionNo}(questionNo=${question.questionNo})}">수정</a>
+                <form method="post" th:action="@{/question/delete}" th:object="${question}" style="display:inline;">
+                    <input type="hidden" name="questionNo" th:value="${question.questionNo}">
+                    <button type="submit">삭제</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>답변 수정</title>
+    <link rel="stylesheet" href="/css/update-qna.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>답변 수정</h1>
+
+    <form action="#" th:action="@{/answer/update/{questionNo}(questionNo=${answer.questionNo})}" th:object="${answer}" method="post">
+        <div>
+            <label for="questionTitle">제목:</label>
+            <input type="text" id="questionTitle" th:field="*{answerTitle}" required />
+        </div>
+        <div>
+            <label for="questionContent">내용:</label>
+            <textarea id="questionContent" th:field="*{answerContent}" required></textarea>
+        </div>
+        <div>
+            <button type="submit">수정하기</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문 보기</title>
+    <link rel="stylesheet" href="/css/question-detail.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>질문 보기</h1>
+
+    <div class="field-group">
+        <label for="questionTitle">제목</label>
+        <div class="value" id="questionTitle" th:text="${question.questionTitle}"></div>
+    </div>
+    <div class="field-group">
+        <label for="questionContent">내용</label>
+        <div class="value">
+            <textarea id="questionContent" readonly th:text="${question.questionContent}"></textarea>
+        </div>
+    </div>
+    <div class="field-group" hidden="hidden">
+        <label for="userNo">작성자</label>
+        <div class="value" id="userNo" th:text="${question.userNo}"></div>
+    </div>
+
+    <div class="field-group">
+        <label>첨부파일</label>
+        <div class="value" th:if="${#lists.isEmpty(question.attachments)}">
+            <p>첨부파일이 없습니다.</p>
+        </div>
+        <div class="value" th:if="${!#lists.isEmpty(question.attachments)}">
+            <div th:each="attachment : ${question.attachments}">
+                <a th:href="@{/question/download/{attachmentNo}(attachmentNo=${attachment.attachmentNo})}" th:text="${attachment.originalFilename}"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <a href="/question" class="btn back-button">뒤로가기</a>
+        <a th:href="@{/question/update/{questionNo}(questionNo=${question.questionNo})}" class="btn">수정</a>
+        <form method="post" th:action="@{/question/delete}" th:object="${question}" style="display:inline;">
+            <input type="hidden" name="questionNo" th:value="${question.questionNo}">
+            <button type="submit" class="btn delete-button">삭제</button>
+        </form>
+    </div>
+
+    <div class="answers-container" th:if="${question.answer != null}">
+        <h2>답변</h2>
+        <div class="answer">
+            <div class="answer-title" th:text="${question.answer.answerTitle}"></div>
+            <div class="answer-content" th:text="${question.answer.answerContent}"></div>
+            <div class="answer-buttons">
+                <a th:href="@{/answer/update/{questionNo}(questionNo=${question.questionNo})}" class="btn">수정</a>
+                <form method="post" th:action="@{/answer/delete}" th:object="${questionNo}" style="display:inline;">
+                    <input type="hidden" name="questionNo" th:value="${question.answer.questionNo}">
+                    <button type="submit" class="btn delete-button">삭제</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="answers-container" th:if="${question.answer == null}">
+        <h2>답변</h2>
+        <div class="answer">
+            <div class="answer-content">답변이 아직 없습니다.</div>
+            <!-- 답변 생성 버튼 추가 -->
+            <div class="answer-buttons">
+                <a th:href="@{/answer/create/{questionNo}(questionNo=${question.questionNo})}" class="btn">답변 생성</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

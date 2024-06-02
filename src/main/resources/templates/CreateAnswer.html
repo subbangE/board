@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>답변 생성</title>
+    <link rel="stylesheet" href="/css/create-answer.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>답변 생성</h1>
+    <form th:action="@{/answer/create/{questionNo}(questionNo=${answer.questionNo})}" th:object="${answer}" method="post">
+        <div class="field-group">
+            <label for="questionNo">질문 번호</label>
+            <input type="text" id="questionNo" th:field="*{questionNo}" class="value" disabled />
+        </div>
+        <div class="field-group">
+            <label for="answerTitle">제목</label>
+            <input type="text" id="answerTitle" th:field="*{answerTitle}" class="value" required />
+        </div>
+        <div class="field-group">
+            <label for="answerContent">내용</label>
+            <textarea id="answerContent" th:field="*{answerContent}" class="value" required></textarea>
+        </div>
+        <div class="buttons">
+            <button type="submit" class="btn">생성</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

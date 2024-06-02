@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문 등록</title>
+    <link rel="stylesheet" href="/css/create-question.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>질문 등록</h1>
+    <form action="#" th:action="@{/question/create}" th:object="${question}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="questionTitle">제목</label>
+            <input type="text" id="questionTitle" th:field="*{questionTitle}" required />
+        </div>
+        <div class="form-group">
+            <label for="userNo">작성자 ID</label>
+            <input type="text" id="userNo" th:field="*{userNo}" required />
+        </div>
+        <div class="form-group">
+            <label for="questionContent">내용</label>
+            <textarea id="questionContent" th:field="*{questionContent}" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">첨부 파일</label>
+            <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.png" required multiple />
+        </div>
+        <button type="submit" class="btn-primary">등록</button>
+    </form>
+</div>
+
+</body>
+</html>
